@@ -1,0 +1,113 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+
+        
+       <div class='m-4'>
+         <!-- Breadcrumb Start -->
+         <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url "home" %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">News</a></li>
+                    <li class="breadcrumb-item active">News details</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+        
+        
+        <!-- Single News Start-->
+        <div class="single-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="sn-img">
+                            <img src="{{ new_detail.img.url }}" />
+                        </div>
+                        <div class="sn-content">
+                            <a class="sn-title" href="">{{ new_detail.title }}</a>
+                            <a class="sn-date" href=""><i class="far fa-clock"></i>{{ new_detail.update_ad }}</a>
+                            <p> {{ new_detail.user }} </p>
+                            <p> {{ new_detail.view_count }} </p>
+                            <p>
+                               {{ new_detail.body  }}
+                            </p>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="sidebar">
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Category</h2>
+                                <div class="category">
+                                    <ul class="fa-ul">
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">National</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">International</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Economics</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Politics</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Lifestyle</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Technology</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Trades</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Tags</h2>
+                                <div class="tags">
+                                    <a href="">National</a>
+                                    <a href="">International</a>
+                                    <a href="">Economics</a>
+                                    <a href="">Politics</a>
+                                    <a href="">Lifestyle</a>
+                                    <a href="">Technology</a>
+                                    <a href="">Trades</a>
+                                    <a href="">National</a>
+                                    <a href="">International</a>
+                                    <a href="">Economics</a>
+                                    <a href="">Politics</a>
+                                    <a href="">Lifestyle</a>
+                                    <a href="">Technology</a>
+                                    <a href="">Trades</a>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Ads 1 column</h2>
+                                <div class="image">
+                                    <a href=""><img src="img/adds-1.jpg" alt="Image"></a>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Ads 2 column</h2>
+                                <div class="image">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href=""><img src="img/adds-2.jpg" alt="Image"></a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a href=""><img src="img/adds-2.jpg" alt="Image"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single News End-->
+
+        {% if request.user == new_detail.user or request.user.is_superuser %}
+            <a class="sn-title bg-dark" href="{% url "new_delete" new_detail.id %}">O'chirish</a>
+            <a class="sn-title" href="{% url "new_update" new_detail.id %}">Yangilash</a>
+        {% endif %}
+       </div>
+
+
+
+        
+{% endblock content %}

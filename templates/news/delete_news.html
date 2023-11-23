@@ -1,0 +1,20 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="m-4">
+
+    <form method="post">{% csrf_token %}
+     
+ 
+        <p>Haqiqatdan ham o'chirasizmi?</p><b> "{{ object }}"</b><br>
+         
+         
+            <input type="submit" value="Confirm">
+            <a href="{% url "new_detail" object.id %}">Cancel</a>   
+    </form>
+    
+</div>
+
+{% endblock content %}
